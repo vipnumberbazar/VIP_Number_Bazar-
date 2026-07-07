@@ -78,7 +78,38 @@ Logout
 </button>
 
 </div>
+<div id="editModal" class="modal" style="display:none;">
 
+  <div class="modal-box">
+
+    <h2>Edit VIP Number</h2>
+
+    <input type="hidden" id="editId">
+
+    <input type="text" id="editNumber" placeholder="VIP Number">
+
+    <input type="text" id="editOperator" placeholder="Operator">
+
+    <input type="number" id="editPrice" placeholder="Price">
+
+    <select id="editStatus">
+      <option>Available</option>
+      <option>Sold</option>
+    </select>
+
+    <label>
+      <input type="checkbox" id="editFeatured">
+      Featured
+    </label>
+
+    <br><br>
+
+    <button onclick="saveEdit()">Save</button>
+    <button onclick="closeEdit()">Cancel</button>
+
+  </div>
+
+</div>
 <script type="module" src="admin.js"></script>
 
 </body>
