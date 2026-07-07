@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIP Number Bazar - Admin</title>
+
+<link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>VIP Number Bazar</h1>
+<h2>Admin Login</h2>
+
+<input
+type="email"
+id="email"
+placeholder="Admin Email">
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<h2>VIP Number Dashboard</h2>
+
+<input
+type="text"
+id="number"
+placeholder="VIP Number">
+
+<input
+type="text"
+id="operator"
+placeholder="Operator">
+
+<input
+type="number"
+id="price"
+placeholder="Price">
+
+<select id="status">
+<option>Available</option>
+<option>Sold</option>
+</select>
+
+<label>
+<input
+type="checkbox"
+id="featured">
+Featured
+</label>
+
+<button onclick="addNumber()">
+Add VIP Number
+</button>
+
+<hr>
+
+<div id="list"></div>
+
+<button onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
