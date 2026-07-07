@@ -111,3 +111,4 @@ loadList();
 }
 
 }
+loadList();
