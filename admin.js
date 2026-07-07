@@ -70,3 +70,44 @@ alert("VIP Number Added Successfully");
 location.reload();
 
 }
+async function loadList() {
+
+const list = document.getElementById("list");
+
+list.innerHTML = "";
+
+const snapshot = await getDocs(collection(db,"vipNumbers"));
+
+snapshot.forEach((d)=>{
+
+const item = d.data();
+
+list.innerHTML += `
+<div class="card">
+<h3>${item.number}</h3>
+<p>Operator: ${item.operator}</p>
+<p>Price: ₹${item.price}</p>
+<p>Status: ${item.status}</p>
+
+<button onclick="deleteNumber('${d.id}')">
+Delete
+</button>
+
+</div>
+`;
+
+});
+
+}
+
+window.deleteNumber = async function(id){
+
+if(confirm("Delete this VIP Number?")){
+
+await deleteDoc(doc(db,"vipNumbers",id));
+
+loadList();
+
+}
+
+}
