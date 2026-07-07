@@ -93,7 +93,9 @@ list.innerHTML += `
 <button onclick="deleteNumber('${d.id}')">
 Delete
 </button>
-
+<button onclick="editNumber('${d.id}')">
+Edit
+</button>
 </div>
 `;
 
@@ -110,16 +112,6 @@ await deleteDoc(doc(db,"vipNumbers",id));
 loadList();
 
 }
-
-}
-loadList();
-<button onclick="deleteNumber('${d.id}')">
-Delete
-</button>
-
-<button onclick="editNumber('${d.id}')">
-Edit
-</button>
-
 </div>
 `;
+loadList();
