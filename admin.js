@@ -116,3 +116,6 @@ loadList();
 <button onclick="editNumber('${d.id}')">
     Edit
 </button>
+<button onclick="editNumber('${d.id}')">
+Edit
+</button>
