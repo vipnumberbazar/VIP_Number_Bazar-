@@ -67,3 +67,5 @@ function showNumbers(list) {
 }
 
 loadNumbers();
+window.searchNumber = searchNumber;
+window.filterOperator = filterOperator;
