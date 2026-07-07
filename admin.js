@@ -6,7 +6,8 @@ import {
   getDocs,
   deleteDoc,
   updateDoc,
-  doc
+  doc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 import {
@@ -24,11 +25,7 @@ window.login = async function () {
 
   try {
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    await signInWithEmailAndPassword(auth, email, password);
 
     document.querySelector(".login-box").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
@@ -46,10 +43,10 @@ window.login = async function () {
 window.logout = async function () {
 
   await signOut(auth);
+
   location.reload();
 
 };
-
 window.addNumber = async function () {
 
   await addDoc(collection(db, "vipNumbers"), {
@@ -71,6 +68,7 @@ window.addNumber = async function () {
   loadList();
 
 };
+
 async function loadList() {
 
   const list = document.getElementById("list");
@@ -94,13 +92,9 @@ async function loadList() {
 
         <p>Status: ${item.status}</p>
 
-        <button onclick="editNumber('${d.id}')">
-          Edit
-        </button>
+        <button onclick="editNumber('${d.id}')">Edit</button>
 
-        <button onclick="deleteNumber('${d.id}')">
-          Delete
-        </button>
+        <button onclick="deleteNumber('${d.id}')">Delete</button>
 
       </div>
     `;
@@ -118,24 +112,49 @@ window.deleteNumber = async function(id){
 
   }
 
-}
+};
 
 window.editNumber = async function(id){
 
-  const newPrice = prompt("Enter New Price");
+  const snap = await getDoc(doc(db,"vipNumbers",id));
 
-  if(newPrice){
+  const item = snap.data();
 
-    await updateDoc(doc(db,"vipNumbers",id),{
+  document.getElementById("editId").value = id;
+  document.getElementById("editNumber").value = item.number;
+  document.getElementById("editOperator").value = item.operator;
+  document.getElementById("editPrice").value = item.price;
+  document.getElementById("editStatus").value = item.status;
+  document.getElementById("editFeatured").checked = item.featured || false;
 
-      price:Number(newPrice)
+  document.getElementById("editModal").style.display = "flex";
 
-    });
+};
 
-    loadList();
+window.closeEdit = function(){
 
-  }
+  document.getElementById("editModal").style.display = "none";
 
-}
+};
+
+window.saveEdit = async function(){
+
+  const id = document.getElementById("editId").value;
+
+  await updateDoc(doc(db,"vipNumbers",id),{
+
+    number: document.getElementById("editNumber").value,
+    operator: document.getElementById("editOperator").value,
+    price: Number(document.getElementById("editPrice").value),
+    status: document.getElementById("editStatus").value,
+    featured: document.getElementById("editFeatured").checked
+
+  });
+
+  closeEdit();
+
+  loadList();
+
+};
 
 loadList();
