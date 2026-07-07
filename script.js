@@ -82,3 +82,15 @@ item.number.replace(/\s/g,"").includes(text.replace(/\s/g,""))
 showNumbers(result);
 
 }
+function filterOperator(operator){
+
+if(operator==="All"){
+showNumbers(vipNumbers);
+return;
+}
+
+const result = vipNumbers.filter(item => item.operator===operator);
+
+showNumbers(result);
+
+}
