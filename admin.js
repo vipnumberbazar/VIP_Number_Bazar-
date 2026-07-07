@@ -111,7 +111,3 @@ await deleteDoc(doc(db,"vipNumbers",id));
 
 loadList();
 
-}
-</div>
-`;
-loadList();
