@@ -46,3 +46,24 @@ const result = vipNumbers.filter(item => item.operator===operator);
 showNumbers(result);
 
 }
+function showNumbers(list) {
+  container.innerHTML = "";
+
+  list.forEach(item => {
+    container.innerHTML += `
+      <div class="card">
+        <h2>${item.number}</h2>
+        <p><b>Operator:</b> ${item.operator}</p>
+        <p><b>Price:</b> ₹${item.price}</p>
+        <p><b>Status:</b> ${item.status}</p>
+
+        <a class="buy-btn"
+        href="https://wa.me/918070424242?text=I want VIP Number ${item.number}">
+          Book Now
+        </a>
+      </div>
+    `;
+  });
+}
+
+loadNumbers();
