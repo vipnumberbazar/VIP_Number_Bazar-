@@ -33,7 +33,7 @@ password
 
 document.querySelector(".login-box").style.display="none";
 document.getElementById("dashboard").style.display="block";
-
+loadList();
 }catch(e){
 
 document.getElementById("msg").innerHTML=e.message;
