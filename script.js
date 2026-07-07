@@ -1,73 +1,25 @@
 
-const vipNumbers = [
-{
-number:"98765 11111",
-operator:"Jio",
-price:"₹15,000",
-status:"Available"
-},
-{
-number:"98765 22222",
-operator:"Airtel",
-price:"₹12,000",
-status:"Available"
-},
-{
-number:"98765 33333",
-operator:"Jio",
-price:"₹18,000",
-status:"Available"
-},
-{
-number:"98765 44444",
-operator:"Vi",
-price:"₹9,999",
-status:"Available"
-},
-{
-number:"98765 55555",
-operator:"BSNL",
-price:"₹7,999",
-status:"Available"
-},
-{
-number:"98765 786786",
-operator:"Jio",
-price:"₹25,000",
-status:"Featured"
-}
-];
+import { db } from "./firebase.js";
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+let vipNumbers = [];
 
 const container = document.getElementById("numbers");
 
-function showNumbers(list){
-container.innerHTML="";
+async function loadNumbers() {
+  const querySnapshot = await getDocs(collection(db, "vipNumbers"));
 
-list.forEach(item=>{
+  vipNumbers = [];
 
-container.innerHTML += `
-<div class="card">
-<h2>${item.number}</h2>
+  querySnapshot.forEach((doc) => {
+    vipNumbers.push(doc.data());
+  });
 
-<p><b>Operator:</b> ${item.operator}</p>
-
-<p><b>Price:</b> ${item.price}</p>
-
-<p><b>Status:</b> ${item.status}</p>
-
-<a class="buy-btn"
-href="https://wa.me/918070424242?text=I want VIP Number ${item.number}">
-Book Now
-</a>
-
-</div>
-`;
-
-});
-
+  showNumbers(vipNumbers);
 }
-
-showNumbers(vipNumbers);
 function searchNumber(){
 
 const text=document
