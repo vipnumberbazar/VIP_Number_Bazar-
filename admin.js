@@ -113,9 +113,13 @@ loadList();
 
 }
 loadList();
-<button onclick="editNumber('${d.id}')">
-    Edit
+<button onclick="deleteNumber('${d.id}')">
+Delete
 </button>
+
 <button onclick="editNumber('${d.id}')">
 Edit
 </button>
+
+</div>
+`;
