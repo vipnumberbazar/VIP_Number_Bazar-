@@ -64,8 +64,7 @@ window.addNumber = async function () {
   });
 
   alert("VIP Number Added Successfully");
-
-  loadList();
+location.reload();
 
 };
 
