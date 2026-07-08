@@ -54,7 +54,9 @@ window.addNumber = async function () {
     number: document.getElementById("number").value,
 
     operator: document.getElementById("operator").value,
-
+    
+    owner: document.getElementById("owner").value,
+    
     price: Number(document.getElementById("price").value),
 
     status: document.getElementById("status").value,
