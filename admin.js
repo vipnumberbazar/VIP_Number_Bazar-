@@ -169,3 +169,65 @@ window.saveEdit = async function(){
 };
 
 loadList();
+
+window.showOwners = async function () {
+
+  const ownerList = document.getElementById("ownerList");
+  ownerList.innerHTML = "";
+
+  const snapshot = await getDocs(collection(db, "vipNumbers"));
+
+  const owners = {};
+
+  snapshot.forEach((doc) => {
+    const item = doc.data();
+
+    const owner = item.owner || "Unknown";
+
+    if (!owners[owner]) owners[owner] = [];
+
+    owners[owner].push(item);
+  });
+
+  Object.keys(owners).sort().forEach((owner) => {
+
+    const div = document.createElement("div");
+    div.className = "owner-card";
+
+    div.innerHTML =
+      `👤 ${owner} (${owners[owner].length} Numbers)`;
+
+    div.onclick = () => {
+
+      let html = `<h2>👤 ${owner}</h2><hr>`;
+
+      owners[owner].forEach((n) => {
+
+        html += `
+        <div class="card">
+          <b>📱 ${n.number}</b><br>
+          📡 ${n.operator}<br>
+          💰 ₹${n.price}<br>
+          🟢 ${n.status}
+        </div><br>
+        `;
+
+      });
+
+      ownerList.innerHTML = html;
+
+    };
+
+    ownerList.appendChild(div);
+
+  });
+
+  document.getElementById("ownerModal").style.display = "flex";
+
+};
+
+window.closeOwners = function () {
+
+  document.getElementById("ownerModal").style.display = "none";
+
+};
