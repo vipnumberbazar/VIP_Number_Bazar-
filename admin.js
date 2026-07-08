@@ -70,7 +70,7 @@ window.addNumber = async function () {
 };
 
 async function loadList() {
-
+const search = document.getElementById("searchBox").value.toLowerCase();
   const list = document.getElementById("list");
 
   list.innerHTML = "";
