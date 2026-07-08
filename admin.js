@@ -95,6 +95,8 @@ String(item.operator).toLowerCase().indexOf(search) === -1
 
         <p>Operator: ${item.operator}</p>
 
+        <p>Owner: ${item.owner || "-"}</p>
+
         <p>Price: ₹${item.price}</p>
 
         <p>Status: ${item.status}</p>
