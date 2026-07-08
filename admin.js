@@ -132,6 +132,7 @@ window.editNumber = async function(id){
   document.getElementById("editId").value = id;
   document.getElementById("editNumber").value = item.number;
   document.getElementById("editOperator").value = item.operator;
+  document.getElementById("editOwner").value = item.owner || "";
   document.getElementById("editPrice").value = item.price;
   document.getElementById("editStatus").value = item.status;
   document.getElementById("editFeatured").checked = item.featured || false;
