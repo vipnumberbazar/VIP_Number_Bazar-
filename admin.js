@@ -105,8 +105,8 @@ String(item.operator).toLowerCase().indexOf(search) === -1
     `;
 
   });
-
 }
+window.loadList = loadList;
 window.deleteNumber = async function(id){
 
   if(confirm("Delete this VIP Number?")){
