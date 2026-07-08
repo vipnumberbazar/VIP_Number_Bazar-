@@ -155,6 +155,7 @@ window.saveEdit = async function(){
 
     number: document.getElementById("editNumber").value,
     operator: document.getElementById("editOperator").value,
+    owner: document.getElementById("editOwner").value,
     price: Number(document.getElementById("editPrice").value),
     status: document.getElementById("editStatus").value,
     featured: document.getElementById("editFeatured").checked
