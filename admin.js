@@ -77,8 +77,11 @@ const search = document.getElementById("searchBox").value.toLowerCase();
 
   const snapshot = await getDocs(collection(db, "vipNumbers"));
 
-  snapshot.forEach((d) => {
+  const docs = snapshot.docs.sort((a, b) => {
+    return (b.data().featured === true) - (a.data().featured === true);
+});
 
+docs.forEach((d) => {
     const item = d.data();
 if (
 item.number.toLowerCase().indexOf(search) === -1 &&
