@@ -80,7 +80,12 @@ const search = document.getElementById("searchBox").value.toLowerCase();
   snapshot.forEach((d) => {
 
     const item = d.data();
-
+if (
+item.number.toLowerCase().indexOf(search) === -1 &&
+item.operator.toLowerCase().indexOf(search) === -1
+){
+return;
+}
     list.innerHTML += `
       <div class="card">
 
