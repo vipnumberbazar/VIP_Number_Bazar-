@@ -69,9 +69,7 @@ loadList();
 };
 
 async function loadList() {
-const search = document.getElementById("searchBox").value.toLowerCase();
-  const list = document.getElementById("list");
-
+const search = (document.getElementById("searchBox")?.value || "").toLowerCase();
   list.innerHTML = "";
 
   const snapshot = await getDocs(collection(db, "vipNumbers"));
