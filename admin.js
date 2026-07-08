@@ -84,10 +84,10 @@ const search = document.getElementById("searchBox").value.toLowerCase();
 docs.forEach((d) => {
     const item = d.data();
 if (
-item.number.toLowerCase().indexOf(search) === -1 &&
-item.operator.toLowerCase().indexOf(search) === -1
+String(item.number).toLowerCase().indexOf(search) === -1 &&
+String(item.operator).toLowerCase().indexOf(search) === -1
 ){
-return;
+    return;
 }
     list.innerHTML += `
       <div class="card">
