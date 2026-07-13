@@ -164,3 +164,49 @@ border-radius:8px;
 font-weight:bold;
 cursor:pointer;
 }
+.hero-card{
+background:#111;
+color:#fff;
+padding:35px 20px;
+text-align:center;
+border-radius:20px;
+margin:15px;
+border:2px solid gold;
+}
+
+.hero-card h1{
+font-size:30px;
+color:gold;
+}
+
+.hero-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:gold;
+color:#000;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.category-slider{
+display:flex;
+overflow-x:auto;
+gap:12px;
+padding:15px;
+}
+
+.cat{
+min-width:140px;
+padding:15px;
+text-align:center;
+border-radius:15px;
+font-weight:bold;
+color:#fff;
+}
+
+.platinum{background:#444;}
+.gold{background:#d4af37;}
+.titanium{background:#555;}
+.silver{background:#999;}
